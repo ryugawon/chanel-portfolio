@@ -1,0 +1,670 @@
+/* ==========================================
+   Global Variables & Base Setup
+   ========================================== */
+:root {
+    --bg-color: #0c0c0c;
+    --card-bg: #161616;
+    --text-primary: #FFFFFF;
+    --text-secondary: #999999;
+    --accent-color: #D4AF37; /* Luxury Gold */
+    --border-color: #262626;
+    --hover-bg: #222222;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .serif {
+    font-family: 'Playfair Display', serif;
+}
+
+/* ==========================================
+   Header & Dropdown Navigation
+   ========================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(12, 12, 12, 0.85);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+}
+
+nav {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-item {
+    position: relative;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.3s;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+nav a.active, nav a:hover {
+    color: var(--accent-color);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    background: rgba(22, 22, 22, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    width: 180px;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu a {
+    padding: 10px 20px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background: var(--hover-bg);
+    color: var(--text-primary);
+}
+
+.header-cta {
+    padding: 0.6rem 1.4rem;
+    background: var(--accent-color);
+    color: #0c0c0c;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.header-cta:hover {
+    background: #FFFFFF;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* ==========================================
+   Section Layouts (Fullscreen 100vh)
+   ========================================== */
+section {
+    min-height: 100vh;
+    padding: 100px 10% 60px 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+.section-tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: block;
+    font-weight: 600;
+}
+
+.section-desc {
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* ==========================================
+   Hero Section Styles
+   ========================================== */
+#hero {
+    text-align: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #0c0c0c 100%);
+}
+
+#hero h1 {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    letter-spacing: -2px;
+    line-height: 1.1;
+}
+
+#hero p {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.hero-ctas {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.btn-primary {
+    background: var(--text-primary);
+    color: #0c0c0c;
+    padding: 1rem 2.5rem;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 1rem 2.5rem;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    border-color: var(--text-primary);
+    background: var(--hover-bg);
+}
+
+.meta-badges {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 3rem;
+}
+
+/* ==========================================
+   Overview Section Styles
+   ========================================== */
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.overview-card {
+    background: var(--card-bg);
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+
+.overview-card:hover {
+    border-color: var(--accent-color);
+}
+
+.overview-card h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.overview-card p {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* ==========================================
+   Brand Identity Section Styles
+   ========================================== */
+.identity-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    max-width: 900px;
+    width: 100%;
+}
+
+.identity-step {
+    background: var(--card-bg);
+    padding: 2rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--text-secondary);
+    border-radius: 4px;
+}
+
+.step-label {
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.step-content {
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+.identity-step.essence {
+    border-left-color: var(--accent-color);
+    background: linear-gradient(135deg, #1f1f1f 0%, #111111 100%);
+    text-align: center;
+    padding: 3rem;
+}
+
+.essence-label {
+    color: #888888;
+    letter-spacing: 3px;
+}
+
+.essence-text {
+    margin-top: 0.8rem;
+    font-size: 1.6rem;
+    font-family: 'Playfair Display', serif;
+    color: var(--accent-color);
+}
+
+/* ==========================================
+   Competitive Landscape Styles
+   ========================================== */
+.landscape-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.brand-card {
+    background: var(--card-bg);
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.brand-card.highlight {
+    border: 2px solid var(--accent-color);
+    background: #181610;
+}
+
+.brand-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 1.5rem;
+}
+
+.brand-card ul {
+    list-style: none;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.brand-card ul li {
+    margin-bottom: 0.8rem;
+}
+
+.brand-card ul li strong {
+    color: var(--text-primary);
+}
+
+/* ==========================================
+   Positioning Map Styles
+   ========================================== */
+.criteria-box {
+    background: var(--card-bg);
+    padding: 2rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.criteria-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+}
+
+.criteria-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.criteria-sub {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.map-container {
+    width: 100%;
+    height: 400px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    position: relative;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.axis-label {
+    position: absolute;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+}
+
+.axis-x-left { bottom: 20px; left: 8%; }
+.axis-x-right { bottom: 20px; right: 8%; }
+.axis-y-top { top: 20px; left: 50%; transform: translateX(-50%); }
+.axis-y-bottom { bottom: 20px; left: 50%; transform: translateX(-50%); }
+
+.map-grid-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px dashed #333333;
+    border-radius: 8px;
+}
+
+.map-point {
+    position: absolute;
+    padding: 0.75rem 1.25rem;
+    background: #222222;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.map-sub { font-size: 0.65rem; color: #888; }
+.map-sub-chanel { font-size: 0.65rem; color: #0c0c0c; font-weight: 700; }
+
+.map-point.chanel {
+    background: var(--accent-color);
+    color: #0c0c0c;
+    font-weight: 700;
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+.point-mac { bottom: 25%; left: 18%; }
+.point-ysl { bottom: 40%; right: 28%; }
+.point-dior { top: 35%; right: 28%; }
+.point-chanel { top: 22%; right: 18%; }
+
+/* ==========================================
+   Key Insight & Strategy Styles
+   ========================================== */
+.insight-banner {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #181818, #0f0f0f);
+    border: 1px solid var(--accent-color);
+    margin-top: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+
+.insight-banner h2 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    margin-bottom: 1rem;
+    font-style: italic;
+    color: var(--accent-color);
+}
+
+.insight-banner p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.strategy-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2.5rem;
+    margin-top: 2rem;
+}
+
+.strategy-statement {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    font-family: 'Playfair Display', serif;
+}
+
+.strategy-tags {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.strategy-tag {
+    background: #222222;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.strategy-tag strong {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+}
+
+/* ==========================================
+   Process & Iteration Styles
+   ========================================== */
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.process-card {
+    background: var(--card-bg);
+    padding: 2rem 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.process-card span {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.iteration-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.iteration-box {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.iteration-box.after {
+    border-color: var(--accent-color);
+    background: #141310;
+}
+
+.iteration-title-initial { margin-bottom: 1rem; font-size: 1.1rem; color: #777; }
+.iteration-title-final { margin-bottom: 1rem; font-size: 1.1rem; color: var(--accent-color); }
+
+.iteration-box ul {
+    padding-left: 1.2rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.iteration-box ul li {
+    margin-bottom: 0.75rem;
+}
+
+/* ==========================================
+   Conclusion & Footer Styles
+   ========================================== */
+.conclusion-section {
+    text-align: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #1f1b10 0%, #0c0c0c 100%);
+}
+
+.conclusion-section h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1.5rem;
+}
+
+.conclusion-main {
+    font-size: 1.4rem;
+    font-family: 'Playfair Display', serif;
+    color: var(--accent-color);
+}
+
+.conclusion-sub {
+    font-size: 1.05rem;
+    font-family: 'Pretendard', sans-serif;
+    color: var(--text-secondary);
+    margin-top: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    padding: 40px 10%;
+    background: #080808;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border-color);
+}
+
+footer .footer-nav {
+    display: flex;
+    gap: 2rem;
+}
+
+footer .footer-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer .footer-nav a:hover {
+    color: var(--accent-color);
+}
+
+/* ==========================================
+   Media Queries (Responsive Control)
+   ========================================== */
+@media (max-width: 1024px) {
+    .overview-grid, .landscape-grid, .process-steps { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 768px) {
+    nav { 
+        display: none; 
+    }
+    .overview-grid, .landscape-grid, .process-steps, .iteration-container { 
+        grid-template-columns: 1fr; 
+    }
+    section { 
+        min-height: auto; 
+        padding: 100px 6% 80px 6%; 
+    }
+    .hero-ctas { 
+        flex-direction: column; 
+        width: 100%; 
+    }
+    footer { 
+        flex-direction: column; 
+        gap: 1.5rem; 
+        text-align: center; 
+    }
+}
