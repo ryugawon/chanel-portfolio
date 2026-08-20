@@ -592,3 +592,17 @@ footer .footer-nav a:hover {
     .hero-ctas { flex-direction: column; width: 100%; }
     footer { flex-direction: column; gap: 1rem; text-align: center; }
 }
+/* style.css 상단 로고 스타일 부분 */
+.logo {
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-primary); /* 색상 유지 */
+    text-decoration: none;      /* 밑줄 제거 */
+    cursor: pointer;            /* 마우스 커서 손가락 모양 */
+}
+
+.logo:hover {
+    color: var(--accent-color); /* 호버 시 색상 변화 (선택사항) */
+}
